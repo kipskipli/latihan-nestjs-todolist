@@ -11,7 +11,7 @@ import { JWTConfigService } from "./config.service";
             load: [configuration],
             validationSchema: Joi.object({
                 secret: Joi.string().default('abcd'),
-                ttl: Joi.string().default('15 * 60')
+                ttl: Joi.string().default('1h')
             })
         })
     ],
