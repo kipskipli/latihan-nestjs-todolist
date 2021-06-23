@@ -3,14 +3,14 @@ import {
   HttpResponseInterface,
 } from "src/common/interface";
 export class HttpResponseDto implements HttpResponseInterface {
-  readonly ok: Boolean;
-  readonly message: String;
+  readonly ok: boolean;
+  readonly message: string;
   readonly data: any | any[];
   readonly validation: Object[];
   readonly token: AccessTokenInterface;
   constructor(
-    ok: Boolean,
-    message: String,
+    ok: boolean,
+    message: string,
     data: any | any[],
     token?: AccessTokenInterface,
     validation?: Object[],

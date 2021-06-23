@@ -1,8 +1,8 @@
 import { AccessTokenInterface } from "src/common/interface";
 export interface HttpResponseInterface {
-  ok: Boolean;
+  ok: boolean;
   token?: AccessTokenInterface;
-  message: String;
+  message: string;
   data: any | any[];
   validation?: object[];
 }

@@ -6,7 +6,7 @@ export class BaseException extends HttpException {
   readonly validation?: any;
   readonly detail?: any;
   constructor(
-    message: String,
+    message: string,
     status: HttpStatus,
     detail?: any,
     validation?: any,
