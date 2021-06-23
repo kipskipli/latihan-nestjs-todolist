@@ -6,16 +6,16 @@ import { JWTConfigService } from "./config.service";
 
 @Global()
 @Module({
-    imports: [
-        ConfigModule.forRoot({
-            load: [configuration],
-            validationSchema: Joi.object({
-                secret: Joi.string().default('abcd'),
-                ttl: Joi.string().default('1h')
-            })
-        })
-    ],
-    providers: [ JWTConfigService ],
-    exports: [ JWTConfigService ]
+	imports: [
+		ConfigModule.forRoot({
+			load: [configuration],
+			validationSchema: Joi.object({
+				secret: Joi.string().default("abcd"),
+				ttl: Joi.string().default("1h"),
+			}),
+		}),
+	],
+	providers: [JWTConfigService],
+	exports: [JWTConfigService],
 })
-export class JWTConfigModule{}
+export class JWTConfigModule {}

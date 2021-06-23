@@ -1,4 +1,4 @@
 export interface InspigoKeyHeaderInterface {
-    header: string,
-    prefix?: string
+	header: string;
+	prefix?: string;
 }
