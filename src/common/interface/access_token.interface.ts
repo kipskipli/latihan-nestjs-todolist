@@ -1,4 +1,4 @@
 export interface AccessTokenInterface {
-	access: String;
-	refresh?: String;
+  access: String;
+  refresh?: String;
 }

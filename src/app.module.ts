@@ -6,8 +6,8 @@ import { RedisCacheModule } from "./common/service/redis_cache/redis_cache.modul
 import { AppConfigModule } from "./config/app/config.module";
 
 @Module({
-	imports: [AppConfigModule, AuthModule, RedisCacheModule],
-	controllers: [AppController],
-	providers: [AppService],
+  imports: [AppConfigModule, AuthModule, RedisCacheModule],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

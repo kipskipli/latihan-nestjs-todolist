@@ -1,8 +1,3 @@
-# Inspigo NestJs Boilerplate
-##### Boilerplate backend untuk project dengan menggunakan NestJs sebagai Framework.
----
-
-```bash
 .
 ├── README.md
 ├── nest-cli.json
@@ -112,4 +107,5 @@
 ├── tsconfig.build.json
 ├── tsconfig.json
 └── webpack-hmr.config.js
-```
+
+36 directories, 72 files

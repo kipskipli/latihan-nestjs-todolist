@@ -1,3 +1,1 @@
-export default {
-	JTI_REDIS_PREFIX: "jti:allowed:account",
-};
+export { JTI_REDIS_PREFIX } from "src/common/constant/redis";

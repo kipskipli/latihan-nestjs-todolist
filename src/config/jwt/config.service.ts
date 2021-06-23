@@ -3,17 +3,17 @@ import { ConfigService } from "@nestjs/config";
 
 @Injectable()
 export class JWTConfigService {
-	constructor(private configService: ConfigService) {}
+  constructor(private configService: ConfigService) {}
 
-	get secret(): string {
-		return this.configService.get<string>("jwt_config.secret");
-	}
+  get secret(): string {
+    return this.configService.get<string>("jwt_config.secret");
+  }
 
-	get ttl(): string {
-		return this.configService.get<string>("jwt_config.ttl");
-	}
+  get ttl(): string {
+    return this.configService.get<string>("jwt_config.ttl");
+  }
 
-	get issuer(): string {
-		return this.configService.get<string>("jwt_config.issuer");
-	}
+  get issuer(): string {
+    return this.configService.get<string>("jwt_config.issuer");
+  }
 }
