@@ -36,9 +36,6 @@
 │   │   │   ├── auth
 │   │   │   │   ├── auth.module.ts
 │   │   │   │   ├── guard
-│   │   │   │   │   ├── decorator
-│   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   └── origin.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── jwt.guard.ts
 │   │   │   │   │   ├── jwt_or_server_key.guard.ts

@@ -6,5 +6,5 @@ export default registerAs("app", () => ({
   port: process.env.APP_PORT,
   key: process.env.APP_SERVER_KEY,
   throttleTtl: process.env.APP_THROTTLE_TTL,
-  throttleLimit: process.env.APP_THROTTLE_LIMIT
+  throttleLimit: process.env.APP_THROTTLE_LIMIT,
 }));

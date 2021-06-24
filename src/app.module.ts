@@ -32,8 +32,8 @@ import { AppConfigService } from "./config/app/config.service";
     },
     {
       provide: APP_GUARD,
-      useClass: ThrottlerGuard
-    }
+      useClass: ThrottlerGuard,
+    },
   ],
 })
 export class AppModule {}
