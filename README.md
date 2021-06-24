@@ -90,10 +90,11 @@
 │   │   │   ├── config.module.ts
 │   │   │   ├── config.service.ts
 │   │   │   └── configuration.ts
-│   │   └── redis
-│   │       ├── config.module.ts
-│   │       ├── config.service.ts
-│   │       └── configuration.ts
+│   │   ├── redis
+│   │   │   ├── config.module.ts
+│   │   │   ├── config.service.ts
+│   │   │   └── configuration.ts
+│   │   └── throller
 │   ├── login.pipe.ts
 │   ├── main.ts
 │   ├── modules

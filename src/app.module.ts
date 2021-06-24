@@ -18,8 +18,8 @@ import { AppConfigService } from "./config/app/config.service";
       imports: [AppConfigModule],
       inject: [AppConfigService],
       useFactory: (config: AppConfigService) => ({
-        ttl: config.throttleTtl,
-        limit: config.throttleLimit,
+        ttl: config.throttlerTtl,
+        limit: config.throttlerLimit,
       }),
     }),
   ],
