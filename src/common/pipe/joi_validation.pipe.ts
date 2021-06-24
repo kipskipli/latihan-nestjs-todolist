@@ -6,7 +6,7 @@ import { BadRequestException } from "../server/response/http-exception";
 export abstract class JoiValidationPipe implements PipeTransform<unknown> {
   public transform(value: unknown): unknown {
     const result = this.buildSchema().validate(value);
-    let validation = this._transformValidationMessage(result.error);
+    const validation = this._transformValidationMessage(result.error);
     if (result.error) {
       throw new BadRequestException(validation);
     }
@@ -14,12 +14,12 @@ export abstract class JoiValidationPipe implements PipeTransform<unknown> {
     return result.value;
   }
 
-  _transformValidationMessage(error) {
-      let message = {};
-      error.details.forEach(err => {
-          message[err.path] = [err.message.replace(/"/g, ``)];
-      });
-      return message;
+  private _transformValidationMessage(error) {
+    const message = {};
+    error.details.forEach((err) => {
+      message[err.path] = [err.message.replace(/"/g, ``)];
+    });
+    return message;
   }
 
   public abstract buildSchema(): Joi.Schema;

@@ -51,7 +51,6 @@
 │   │   │   │       ├── jwt.strategy.ts
 │   │   │   │       └── server_api_key.strategy.ts
 │   │   │   ├── response
-│   │   │   │   ├── application.response.ts
 │   │   │   │   ├── dto
 │   │   │   │   │   ├── http_response.dto.ts
 │   │   │   │   │   └── index.ts
@@ -60,13 +59,19 @@
 │   │   │   │       ├── base.exception.ts
 │   │   │   │       ├── duplicated.exception.ts
 │   │   │   │       ├── forbidden.exception.ts
-│   │   │   │       ├── http_exception.filter.ts
 │   │   │   │       ├── index.ts
 │   │   │   │       ├── internal_server_error.exception.ts
 │   │   │   │       ├── not_found.exception.ts
 │   │   │   │       └── unauthorized.exception.ts
+│   │   │   ├── shared
+│   │   │   │   ├── application.response.ts
+│   │   │   │   ├── http_exception.filter.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── logging.interceptor.ts
 │   │   │   └── util
-│   │   │       ├── decorator.ts
+│   │   │       ├── decorator
+│   │   │       │   ├── decorator.ts
+│   │   │       │   └── index.ts
 │   │   │       ├── fn.ts
 │   │   │       └── index.ts
 │   │   ├── service
@@ -89,6 +94,7 @@
 │   │       ├── config.module.ts
 │   │       ├── config.service.ts
 │   │       └── configuration.ts
+│   ├── login.pipe.ts
 │   ├── main.ts
 │   ├── modules
 │   │   └── some_module_1
@@ -106,7 +112,7 @@
 │   │       │   └── model_1.entity.ts
 │   │       └── model_1
 │   │           └── model_1.repository.ts
-│   └── type
+│   └── types
 │       └── express.d.ts
 ├── tree.txt
 ├── tsconfig.build.json

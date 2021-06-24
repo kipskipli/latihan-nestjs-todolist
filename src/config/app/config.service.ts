@@ -16,4 +16,12 @@ export class AppConfigService {
   get key(): string {
     return this.configService.get<string>("app.key");
   }
+
+  get throttlerTtl(): number {
+    return this.configService.get<number>("app.throttlerTtl", 60);
+  }
+
+  get throttlerLimit(): number {
+    return this.configService.get<number>("app.throttlerLimit", 10);
+  }
 }

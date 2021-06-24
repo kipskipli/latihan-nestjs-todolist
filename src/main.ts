@@ -1,11 +1,13 @@
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
+import * as helmet from "helmet";
 import { HttpExceptionFilter } from "./common/server/shared";
 import { AppConfigService } from "./config/app/config.service";
 declare const module: any;
 async function boostrap() {
   const app = await NestFactory.create(AppModule);
   const appConfig: AppConfigService = app.get("AppConfigService");
+  app.use(helmet());
   app.useGlobalFilters(new HttpExceptionFilter());
   await app.setGlobalPrefix("/api/v1");
   await app.listen(appConfig.port, () => {

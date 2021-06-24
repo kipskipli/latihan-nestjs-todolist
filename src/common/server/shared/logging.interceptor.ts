@@ -1,5 +1,5 @@
 import {
-    CallHandler,
+  CallHandler,
   ExecutionContext,
   Injectable,
   Logger,
@@ -17,13 +17,15 @@ export class LoggingInterceptor implements NestInterceptor {
     const method = req.method;
     const url = req.url;
     const date = Date.now();
-    return call$.handle().pipe(
-      tap(() =>
-        Logger.log(
-          `${method} ${url} ${Date.now() - date}ms`,
-          context.getClass().name,
+    return call$
+      .handle()
+      .pipe(
+        tap(() =>
+          Logger.log(
+            `${method} ${url} ${Date.now() - date}ms`,
+            context.getClass().name,
+          ),
         ),
-      ),
-    );
+      );
   }
 }
