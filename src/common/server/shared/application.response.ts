@@ -1,6 +1,6 @@
-import { HttpStatus, Res, Response } from "@nestjs/common";
+import { HttpStatus, Res } from "@nestjs/common";
 import { AccessTokenInterface } from "src/common/interface";
-import { HttpResponseDto } from "./dto/http_response.dto";
+import { HttpResponseDto } from "../response/dto/http_response.dto";
 
 export class ApplicationResponse {
   static ok(@Res() res, data: any, token?: AccessTokenInterface): Response {

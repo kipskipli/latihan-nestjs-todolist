@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  ForbiddenException,
   Get,
   Header,
   Post,
@@ -8,10 +9,11 @@ import {
   Res,
   Response,
   UseGuards,
+  UsePipes,
 } from "@nestjs/common";
 import { AppService } from "./app.service";
 import { JwtAuthGuard } from "./common/server/auth/guard/jwt.guard";
-import { ApplicationResponse } from "./common/server/response/application.response";
+import { ApplicationResponse } from "./common/server/shared/application.response";
 import {
   BadRequestException,
   InternalServerErrorException,
@@ -23,6 +25,7 @@ import {
 } from "./common/server/auth/guard";
 import { LOGIN_ORIGIN_ENUM } from "./common/enum";
 import { Origin } from "./common/server/util/decorator";
+import { LoginPipe } from "./login.pipe";
 
 @Controller()
 export class AppController {
@@ -39,7 +42,7 @@ export class AppController {
   }
 
   @Post("/login")
-  async login(@Body() body, @Res() res): Promise<Response> {
+  async login(@Body(LoginPipe) body, @Res() res): Promise<Response> {
     const user: {
       origin: LOGIN_ORIGIN_ENUM;
       username: string;
@@ -55,7 +58,7 @@ export class AppController {
   @UseGuards(JwtOrServerKeyAuthGuard, OriginGuard)
   @Origin(LOGIN_ORIGIN_ENUM.APPS)
   async multiGuard(@Res() res, @Req() req): Promise<Response> {
-    const message = "welcome guard";
+    const message = this.appService.getHello();
     const data = {
       message,
     };

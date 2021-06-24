@@ -1,4 +1,3 @@
-export { HttpExceptionFilter } from "./http_exception.filter";
 export { BadRequestException } from "./bad_request.exception";
 export { DuplicatedException } from "./duplicated.exception";
 export { ForbiddenException } from "./forbidden.exception";

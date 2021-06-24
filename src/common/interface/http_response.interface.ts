@@ -3,6 +3,6 @@ export interface HttpResponseInterface {
   ok: boolean;
   token?: AccessTokenInterface;
   message: string;
-  data: any | any[];
-  validation?: object[];
+  data: any;
+  validation?: any;
 }

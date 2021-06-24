@@ -1,6 +1,6 @@
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
-import { HttpExceptionFilter } from "./common/server/response/http-exception/http_exception.filter";
+import { HttpExceptionFilter } from "./common/server/shared";
 import { AppConfigService } from "./config/app/config.service";
 declare const module: any;
 async function boostrap() {

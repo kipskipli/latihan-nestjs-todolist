@@ -5,20 +5,19 @@ import {
 export class HttpResponseDto implements HttpResponseInterface {
   readonly ok: boolean;
   readonly message: string;
-  readonly data: any | any[];
-  readonly validation: Object[];
+  readonly data: any;
+  readonly validation: any;
   readonly token: AccessTokenInterface;
   constructor(
     ok: boolean,
     message: string,
-    data: any | any[],
+    data: any,
     token?: AccessTokenInterface,
-    validation?: Object[],
+    validation?: any,
   ) {
     this.ok = ok;
     this.message = message;
     this.data = data;
-    this.validation = validation;
     this.token = token;
     this.validation = validation;
   }
