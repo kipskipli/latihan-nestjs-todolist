@@ -7,7 +7,6 @@ import {
   Post,
   Req,
   Res,
-  Response,
   UseGuards,
   UsePipes,
 } from "@nestjs/common";
@@ -24,8 +23,9 @@ import {
   OriginGuard,
 } from "./common/server/auth/guard";
 import { LOGIN_ORIGIN_ENUM } from "./common/enum";
-import { Origin } from "./common/server/util/decorator";
+import { Origin } from "./common/util/decorator";
 import { LoginPipe } from "./login.pipe";
+import { Response } from "express";
 
 @Controller()
 export class AppController {
@@ -37,12 +37,12 @@ export class AppController {
   @Get("/hello")
   @Header("Content-Type", "application/json")
   @UseGuards(JwtAuthGuard)
-  getHello(@Res() res, @Req() req): Response {
+  getHello(@Res() res: Response, @Req() req): Response {
     return ApplicationResponse.ok(res, { message: "hello world" });
   }
 
   @Post("/login")
-  async login(@Body(LoginPipe) body, @Res() res): Promise<Response> {
+  async login(@Body(LoginPipe) body, @Res() res: Response): Promise<Response> {
     const user: {
       origin: LOGIN_ORIGIN_ENUM;
       username: string;

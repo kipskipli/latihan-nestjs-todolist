@@ -60,22 +60,19 @@
 │   │   │   │       ├── internal_server_error.exception.ts
 │   │   │   │       ├── not_found.exception.ts
 │   │   │   │       └── unauthorized.exception.ts
-│   │   │   ├── shared
-│   │   │   │   ├── application.response.ts
-│   │   │   │   ├── http_exception.filter.ts
-│   │   │   │   ├── index.ts
-│   │   │   │   └── logging.interceptor.ts
-│   │   │   └── util
-│   │   │       ├── decorator
-│   │   │       │   ├── decorator.ts
-│   │   │       │   └── index.ts
-│   │   │       ├── fn.ts
-│   │   │       └── index.ts
+│   │   │   └── shared
+│   │   │       ├── application.response.ts
+│   │   │       ├── http_exception.filter.ts
+│   │   │       ├── index.ts
+│   │   │       └── logging.interceptor.ts
 │   │   ├── service
 │   │   │   └── redis_cache
 │   │   │       ├── redis_cache.module.ts
 │   │   │       └── redis_cache.service.ts
 │   │   └── util
+│   │       ├── decorator
+│   │       │   ├── decorator.ts
+│   │       │   └── index.ts
 │   │       ├── fn.ts
 │   │       └── index.ts
 │   ├── config

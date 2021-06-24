@@ -1,1 +1,1 @@
-export {} from "./fn";
+export { generateJWTIdKey } from "./fn";

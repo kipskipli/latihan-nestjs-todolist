@@ -3,7 +3,7 @@ import { PassportStrategy } from "@nestjs/passport";
 import { Injectable } from "@nestjs/common";
 import { JWTConfigService } from "src/config/jwt/config.service";
 import { RedisCacheService } from "../../../service/redis_cache/redis_cache.service";
-import { generateJWTIdKey } from "../../util/fn";
+import { generateJWTIdKey } from "../../../util/fn";
 import { UnauthorizedException } from "../../response/http-exception";
 
 @Injectable()
