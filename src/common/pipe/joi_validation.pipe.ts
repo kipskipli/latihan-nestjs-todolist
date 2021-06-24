@@ -6,8 +6,8 @@ import { BadRequestException } from "../server/response/http-exception";
 export abstract class JoiValidationPipe implements PipeTransform<unknown> {
   public transform(value: unknown): unknown {
     const result = this.buildSchema().validate(value);
-    const validation = this._transformValidationMessage(result.error);
     if (result.error) {
+      const validation = this._transformValidationMessage(result.error);
       throw new BadRequestException(validation);
     }
 
