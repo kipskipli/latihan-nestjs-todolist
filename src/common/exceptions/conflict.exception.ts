@@ -1,9 +1,13 @@
 import { HttpStatus } from "@nestjs/common";
-import { ERROR_MESSAGE } from "../enum";
+import { ErrorMessageEnum } from "@inspigoid/inspigo-utils-ts/lib/type";
 import { BaseException } from "./base.exception";
 
 export class ConflictException extends BaseException {
   constructor(readonly validation: Record<string, Array<any>>) {
-    super(ERROR_MESSAGE.CONFLICT, HttpStatus.CONFLICT, validation);
+    super({
+      message: ErrorMessageEnum.CONFLICT,
+      status: HttpStatus.CONFLICT,
+      validation
+    });
   }
 }

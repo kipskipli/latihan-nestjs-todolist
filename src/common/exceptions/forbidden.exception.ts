@@ -1,9 +1,12 @@
 import { HttpStatus } from "@nestjs/common";
-import { ERROR_MESSAGE } from "../enum";
+import { ErrorMessageEnum } from "@inspigoid/inspigo-utils-ts/lib/type";
 import { BaseException } from "./base.exception";
 
 export class ForbiddenException extends BaseException {
   constructor() {
-    super(ERROR_MESSAGE.FORBIDDEN, HttpStatus.FORBIDDEN);
+    super({
+      message: ErrorMessageEnum.FORBIDDEN,
+      status: HttpStatus.FORBIDDEN
+    });
   }
 }

@@ -1,23 +1,14 @@
-import { HttpException, HttpStatus } from "@nestjs/common";
-import { AccessTokenInterface } from "../interfaces";
+import { HttpException } from "@nestjs/common";
+import {
+  IErrorResponse,
+  InspigoErrorResponseDto
+} from "@inspigoid/inspigo-utils-ts/lib/interface";
 
 export class BaseException extends HttpException {
-  constructor(
-    message: string,
-    status: HttpStatus,
-    validation?: any,
-    token?: AccessTokenInterface,
-    detail?: any,
-  ) {
+  constructor(error: IErrorResponse) {
     super(
-      HttpException.createBody({
-        ok: false,
-        message: message,
-        detail: detail,
-        validation: validation,
-        token: token,
-      }),
-      status,
+      HttpException.createBody(new InspigoErrorResponseDto(error)),
+      error.status
     );
   }
 }

@@ -1,15 +1,13 @@
 import { HttpStatus } from "@nestjs/common";
-import { ERROR_MESSAGE } from "../enum";
+import { ErrorMessageEnum } from "@inspigoid/inspigo-utils-ts/lib/type";
 import { BaseException } from "./base.exception";
 
 export class InternalServerErrorException extends BaseException {
   constructor(detail: any) {
-    super(
-      ERROR_MESSAGE.INTERNAL_SERVER_ERROR,
-      HttpStatus.INTERNAL_SERVER_ERROR,
-      undefined,
-      undefined,
-      detail,
-    );
+    super({
+      message: ErrorMessageEnum.INTERNAL_SERVER_ERROR,
+      status: HttpStatus.INTERNAL_SERVER_ERROR,
+      detail
+    });
   }
 }
