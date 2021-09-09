@@ -31,7 +31,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, "jwt") {
       return { ...payload };
     } catch (err) {
       if (err.message && err.message.includes("Unexpected token a in JSON at")) {
-        let jti = await this.inspigoRedisService.get(key);
+        const jti = await this.inspigoRedisService.get(key);
         if (jti && jti != payload.jti) {
           throw new UnauthorizedException();
         }
