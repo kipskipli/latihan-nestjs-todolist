@@ -9,8 +9,7 @@ import { MongooseConfigService } from "src/config/mongoose/mongoose-config.servi
     MongooseModule.forRootAsync({
       connectionName: MONGO_GAMIFICATION_DB_CONNECTION_NAME,
       imports: [MongooseConfigModule],
-      useFactory: async (config: MongooseConfigService) =>
-        config.gamificationDbConfiguration,
+      useFactory: async (config: MongooseConfigService) => config.gamificationDbConfiguration,
       inject: [MongooseConfigService]
     })
   ],

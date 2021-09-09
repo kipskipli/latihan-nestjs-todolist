@@ -17,18 +17,21 @@ export class SortQueryValidationPipe implements PipeTransform<unknown> {
   }
 
   private checkAscOrDesc(value: string, sortArr: string[]) {
-    let prefix = "";
-    let sortValue = 0;
-    if (value.endsWith("_asc")) {
-      prefix = "_asc";
-      sortValue = 1;
-    } else if (value.endsWith("_desc")) {
-      prefix = "_desc";
-      sortValue = -1;
+    const prefix = this.getPrefix(value);
+    if (!prefix) {
+      return null;
+    }
+    const [field, _] = value.split(prefix.name);
+    return sortArr.indexOf(field) >= 0 ? { [field]: prefix.value } : null;
+  }
+
+  private getPrefix(v: string) {
+    if (v.endsWith("_asc")) {
+      return { name: "_asc", value: 1 };
+    } else if (v.endsWith("_desc")) {
+      return { name: "_desc", value: -1 };
     } else {
       return null;
     }
-    const [field, _] = value.split(prefix);
-    return sortArr.indexOf(field) >= 0 ? { [field]: sortValue } : null;
   }
 }

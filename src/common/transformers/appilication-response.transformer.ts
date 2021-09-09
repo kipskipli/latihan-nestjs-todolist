@@ -1,8 +1,5 @@
 import { HttpStatus, Res } from "@nestjs/common";
-import {
-  InspigoSuccessResponseDto,
-  IAccessToken
-} from "@inspigoid/inspigo-utils-ts/lib/interface";
+import { InspigoSuccessResponseDto, IAccessToken } from "@inspigoid/inspigo-utils-ts/lib/interface";
 
 import { Response } from "express";
 

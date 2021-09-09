@@ -12,10 +12,7 @@ const serverHeaderConfig: IApiKeyHeader = {
 };
 
 @Injectable()
-export class ServerApiKeyStrategy extends PassportStrategy(
-  Strategy,
-  "api-key"
-) {
+export class ServerApiKeyStrategy extends PassportStrategy(Strategy, "api-key") {
   constructor(private readonly appConfigService: AppConfigService) {
     super(serverHeaderConfig, false);
   }

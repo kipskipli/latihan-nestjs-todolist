@@ -7,12 +7,7 @@ import { BarController } from "./bar.controller";
 import { BarService } from "./bar.service";
 
 @Module({
-  imports: [
-    AuthModule,
-    RedisCacheModule,
-    RedisConfigModule,
-    BarRepositoryModule
-  ],
+  imports: [AuthModule, RedisCacheModule, RedisConfigModule, BarRepositoryModule],
   controllers: [BarController],
   providers: [BarService],
   exports: [BarService]
