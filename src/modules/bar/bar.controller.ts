@@ -1,4 +1,4 @@
-import { LoginOriginEnum } from "@inspigoid/inspigo-utils-ts/lib/type";
+import { ELoginOrigin } from "@inspigoid/inspigo-utils-ts/lib/type";
 import { Controller, Get, Req, Res, UseGuards, Param } from "@nestjs/common";
 import { Request, Response } from "express";
 import { JwtOrServerKeyAuthGuard, OriginGuard } from "src/common/auth/guard";
@@ -18,7 +18,7 @@ export class BarController {
 
   @Get(":id")
   @UseGuards(JwtOrServerKeyAuthGuard, OriginGuard)
-  @Origin(LoginOriginEnum.CMS)
+  @Origin(ELoginOrigin.CMS)
   async findAll(
     @Req() req: Request,
     @Res() res: Response,

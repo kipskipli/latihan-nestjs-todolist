@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { RabbitMQModule } from "@golevelup/nestjs-rabbitmq";
-import { ClaimRewardTriggeredEnum } from "@inspigoid/inspigo-utils-ts/lib/constant";
+import { EClaimRewardTriggered } from "@inspigoid/inspigo-utils-ts/lib/constant";
 import { RabbitMQConfigModule } from "src/config/rabbitmq/rabbitmq-config.module";
 import { RabbitMQConfigService } from "src/config/rabbitmq/rabbitmq-config.service";
 
@@ -14,8 +14,8 @@ import { RabbitMQConfigService } from "src/config/rabbitmq/rabbitmq-config.servi
         uri: config.uri,
         exchanges: [
           {
-            name: ClaimRewardTriggeredEnum.EXCHANGE,
-            type: ClaimRewardTriggeredEnum.TYPE
+            name: EClaimRewardTriggered.EXCHANGE,
+            type: EClaimRewardTriggered.TYPE
           }
         ]
       })
