@@ -1,21 +1,25 @@
 import { NestFactory } from "@nestjs/core";
+import helmet from "helmet";
 import { AppModule } from "./app.module";
-import * as helmet from "helmet";
-import { HttpExceptionFilter } from "./common/server/shared";
-import { AppConfigService } from "./config/app/config.service";
-declare const module: any;
-async function boostrap() {
-  const app = await NestFactory.create(AppModule);
-  const appConfig: AppConfigService = app.get("AppConfigService");
+import { HttpExceptionFilter } from "./common/exceptions";
+import { ApiConfigService } from "./config/api-config.service";
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule, {
+    cors: {
+      origin: "*"
+    }
+  });
+  const appConfig = app.get(ApiConfigService);
+
   app.use(helmet());
   app.useGlobalFilters(new HttpExceptionFilter());
-  await app.setGlobalPrefix("/api/v1");
-  await app.listen(appConfig.port, () => {
-    console.log("Application Running On Port: ", appConfig.port);
-  });
-  if (module.hot) {
-    module.hot.accept();
-    module.hot.dispose(() => app.close());
-  }
+  app.enableShutdownHooks();
+
+  app.setGlobalPrefix("/api/v1");
+  await app.listen(appConfig.port, () =>
+    console.log("Application running on port: ", appConfig.port, " 🚀")
+  );
 }
-boostrap();
+
+bootstrap();

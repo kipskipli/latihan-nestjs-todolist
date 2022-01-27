@@ -1,116 +1,73 @@
-# Inspigo NestJs Boilerplate
-##### Boilerplate backend untuk project dengan menggunakan NestJs sebagai Framework.
----
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
+</p>
+
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
+
+  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+    <p align="center">
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
+<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
+<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
+<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
+<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
+  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
+    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+</p>
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+
+## Description
+
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+
+## Installation
 
 ```bash
-.
-├── README.md
-├── nest-cli.json
-├── package-lock.json
-├── package.json
-├── src
-│   ├── app.controller.ts
-│   ├── app.module.ts
-│   ├── app.service.ts
-│   ├── common
-│   │   ├── constant
-│   │   │   ├── index.ts
-│   │   │   └── redis.ts
-│   │   ├── dto
-│   │   │   ├── index.ts
-│   │   │   └── pagination_query.dto.ts
-│   │   ├── enum
-│   │   │   ├── index.ts
-│   │   │   └── login_origin.enum.ts
-│   │   ├── interface
-│   │   │   ├── access_token.interface.ts
-│   │   │   ├── http_response.interface.ts
-│   │   │   ├── index.ts
-│   │   │   └── inspigo_key_header.interface.ts
-│   │   ├── pipe
-│   │   │   ├── index.ts
-│   │   │   └── joi_validation.pipe.ts
-│   │   ├── provider
-│   │   │   └── index.ts
-│   │   ├── server
-│   │   │   ├── auth
-│   │   │   │   ├── auth.module.ts
-│   │   │   │   ├── guard
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── jwt.guard.ts
-│   │   │   │   │   ├── jwt_or_server_key.guard.ts
-│   │   │   │   │   ├── origin.guard.ts
-│   │   │   │   │   └── server_api_key.guard.ts
-│   │   │   │   ├── json_web_token
-│   │   │   │   │   └── inspigo_jwt.service.ts
-│   │   │   │   └── strategy
-│   │   │   │       ├── index.ts
-│   │   │   │       ├── jwt.strategy.ts
-│   │   │   │       └── server_api_key.strategy.ts
-│   │   │   ├── response
-│   │   │   │   ├── dto
-│   │   │   │   │   ├── http_response.dto.ts
-│   │   │   │   │   └── index.ts
-│   │   │   │   └── http-exception
-│   │   │   │       ├── bad_request.exception.ts
-│   │   │   │       ├── base.exception.ts
-│   │   │   │       ├── duplicated.exception.ts
-│   │   │   │       ├── forbidden.exception.ts
-│   │   │   │       ├── index.ts
-│   │   │   │       ├── internal_server_error.exception.ts
-│   │   │   │       ├── not_found.exception.ts
-│   │   │   │       └── unauthorized.exception.ts
-│   │   │   └── shared
-│   │   │       ├── application.response.ts
-│   │   │       ├── http_exception.filter.ts
-│   │   │       ├── index.ts
-│   │   │       └── logging.interceptor.ts
-│   │   ├── service
-│   │   │   └── redis_cache
-│   │   │       ├── redis_cache.module.ts
-│   │   │       └── redis_cache.service.ts
-│   │   └── util
-│   │       ├── decorator
-│   │       │   ├── decorator.ts
-│   │       │   └── index.ts
-│   │       ├── fn.ts
-│   │       └── index.ts
-│   ├── config
-│   │   ├── app
-│   │   │   ├── config.module.ts
-│   │   │   ├── config.service.ts
-│   │   │   └── configuration.ts
-│   │   ├── jwt
-│   │   │   ├── config.module.ts
-│   │   │   ├── config.service.ts
-│   │   │   └── configuration.ts
-│   │   ├── redis
-│   │   │   ├── config.module.ts
-│   │   │   ├── config.service.ts
-│   │   │   └── configuration.ts
-│   │   └── throller
-│   ├── login.pipe.ts
-│   ├── main.ts
-│   ├── modules
-│   │   └── some_module_1
-│   │       ├── some_module.service.ts
-│   │       ├── some_module_1.module.ts
-│   │       └── test
-│   ├── repository
-│   │   ├── mongo
-│   │   │   ├── entity
-│   │   │   │   └── model_1.entity.ts
-│   │   │   └── model_1
-│   │   │       └── model_1.repository.ts
-│   │   └── pg
-│   │       ├── entity
-│   │       │   └── model_1.entity.ts
-│   │       └── model_1
-│   │           └── model_1.repository.ts
-│   └── types
-│       └── express.d.ts
-├── tree.txt
-├── tsconfig.build.json
-├── tsconfig.json
-└── webpack-hmr.config.js
+$ npm install
 ```
+
+## Running the app
+
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod
+```
+
+## Test
+
+```bash
+# unit tests
+$ npm run test
+
+# e2e tests
+$ npm run test:e2e
+
+# test coverage
+$ npm run test:cov
+```
+
+## Support
+
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+
+## Stay in touch
+
+- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
+
+## License
+
+Nest is [MIT licensed](LICENSE).

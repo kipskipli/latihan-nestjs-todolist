@@ -1,39 +1,25 @@
 import { Module } from "@nestjs/common";
-import { APP_GUARD, APP_INTERCEPTOR } from "@nestjs/core";
-import { ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
-import { AuthModule } from "./common/server/auth/auth.module";
-import { LoggingInterceptor } from "./common/server/shared";
-import { RedisCacheModule } from "./common/service/redis_cache/redis_cache.module";
-import { AppConfigModule } from "./config/app/config.module";
-import { AppConfigService } from "./config/app/config.service";
+import { APP_INTERCEPTOR } from "@nestjs/core";
+import { ScheduleModule } from "@nestjs/schedule";
+import { AuthModule } from "./common/auth/auth.module";
+import { LoggingInterceptor, ResponseInterceptor } from "./common/interceptor";
+import { MongooseTodoModule } from "./common/providers/mongoose/mongoose-todo.module";
+import { AppConfigModule } from "./config/app-config.module";
+import { EventHandlerModule } from "./modules/events/handler/event-handler.module";
+import { TodoModule } from "./modules/todo/todo.module";
 
 @Module({
   imports: [
     AppConfigModule,
     AuthModule,
-    RedisCacheModule,
-    ThrottlerModule.forRootAsync({
-      imports: [AppConfigModule],
-      inject: [AppConfigService],
-      useFactory: (config: AppConfigService) => ({
-        ttl: config.throttlerTtl,
-        limit: config.throttlerLimit,
-      }),
-    }),
+    MongooseTodoModule,
+    ScheduleModule.forRoot(),
+    TodoModule,
+    EventHandlerModule
   ],
-  controllers: [AppController],
   providers: [
-    AppService,
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: LoggingInterceptor,
-    },
-    {
-      provide: APP_GUARD,
-      useClass: ThrottlerGuard,
-    },
-  ],
+    { provide: APP_INTERCEPTOR, useClass: LoggingInterceptor },
+    { provide: APP_INTERCEPTOR, useClass: ResponseInterceptor }
+  ]
 })
 export class AppModule {}
