@@ -1,24 +1,42 @@
-import { CACHE_MANAGER, Inject, Injectable } from "@nestjs/common";
-import { Cache } from "cache-manager";
+import IORedis from "ioredis";
+import { Injectable } from "@nestjs/common";
+import { RedisService } from "src/core/redis";
+import { RedisConfigService } from "src/config/redis-config.service";
 
 @Injectable()
 export class RedisCacheService {
-  constructor(@Inject(CACHE_MANAGER) private readonly cache: Cache) {}
+  private redisClient: IORedis.Redis;
+  private defaultTtl: number;
 
-  async get(key: string): Promise<any> {
-    return await this.cache.get(key);
+  constructor(
+    private readonly redisService: RedisService,
+    private readonly redisConfigService: RedisConfigService
+  ) {
+    this.redisClient = this.redisService.getClient();
+    this.defaultTtl = this.redisConfigService.cacheTtl.default;
   }
 
-  async set(key: string, value: any, ttl?: number): Promise<void> {
-    return await this.cache.set(key, value, { ttl: ttl ? ttl : null });
+  async get(key: string): Promise<any> {
+    const data = await this.redisClient.get(key);
+    return JSON.parse(data);
+  }
+
+  async getNoParse(key: string): Promise<any> {
+    return await this.redisClient.get(key)
+  }
+
+  async set(key: string, value: any, ttl = this.defaultTtl): Promise<void> {
+    await this.redisClient.set(key, JSON.stringify(value), "EX", ttl);
+    return;
   }
 
   async del(key): Promise<void> {
-    return await this.cache.del(key);
+    await this.redisClient.del(key);
+    return;
   }
 
-  async getKeysByPattern(pattern: string): Promise<any> {
-    return await this.cache.keys(pattern);
+  async getKeysByPattern(pattern: string) {
+    return await this.redisClient.keys(pattern);
   }
 
   async removeByPattern(pattern: string): Promise<void> {

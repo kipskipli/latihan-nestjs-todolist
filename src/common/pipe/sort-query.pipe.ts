@@ -4,25 +4,24 @@ import { ISortQuery } from "@inspigoid/inspigo-utils-ts/lib/interface";
 
 @Injectable()
 export class SortQueryValidationPipe implements PipeTransform<unknown> {
-  constructor(private readonly sortArr: string[]) {}
+  constructor(private readonly sortArr: string[], private readonly defaultSort?: string) {}
   transform(value: string): ISortQuery {
+    if (!value) {
+      return this.defaultSort ? this.checkAscOrDesc(this.defaultSort, this.sortArr) : { u_at: -1 };
+    }
     if (value && typeof value !== "string") {
       throw new BadRequestException({ sort: ["Invalid Sort Option"] });
     }
-    const sortQuery = this.checkAscOrDesc(value, this.sortArr);
-    if (!sortQuery) {
-      return { u_at: -1 };
-    }
-    return sortQuery;
+    return this.checkAscOrDesc(value, this.sortArr);
   }
 
   private checkAscOrDesc(value: string, sortArr: string[]) {
     const prefix = this.getPrefix(value);
     if (!prefix) {
-      return null;
+      return { u_at: -1 };
     }
     const [field, _] = value.split(prefix.name);
-    return sortArr.indexOf(field) >= 0 ? { [field]: prefix.value } : null;
+    return sortArr.indexOf(field) >= 0 ? { [field]: prefix.value } : { u_at: -1 };
   }
 
   private getPrefix(v: string) {

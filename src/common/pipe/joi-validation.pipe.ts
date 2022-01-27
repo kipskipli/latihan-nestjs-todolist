@@ -1,4 +1,4 @@
-import * as Joi from "joi";
+import Joi from "joi";
 import { Injectable, PipeTransform } from "@nestjs/common";
 import { BadRequestException } from "../exceptions";
 import { EPrivilege } from "@inspigoid/inspigo-utils-ts/lib/type";
@@ -6,7 +6,7 @@ import { EPrivilege } from "@inspigoid/inspigo-utils-ts/lib/type";
 @Injectable()
 export abstract class JoiValidationPipe implements PipeTransform<unknown> {
   public transform(value: unknown): unknown {
-    const result = this.buildSchema().validate(value);
+    const result = this.buildSchema().validate(value, { stripUnknown: true });
     if (result.error) {
       const validation = this._transformValidationMessage(result.error);
       throw new BadRequestException(validation);
