@@ -5,7 +5,7 @@ export class ForbiddenException extends BaseException {
   constructor() {
     super({
       message: EErrorMessage.FORBIDDEN,
-      status: EHttpStatus.FORBIDDEN,
+      status: EHttpStatus.FORBIDDEN
     });
   }
 }

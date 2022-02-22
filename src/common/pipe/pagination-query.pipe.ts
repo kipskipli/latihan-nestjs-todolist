@@ -1,5 +1,5 @@
 import { IPaginateQuery } from "@inspigoid/inspigo-utils-ts/lib/interface";
-import Joi from "joi";
+import * as Joi from "joi";
 import { JoiValidationPipe } from "./joi-validation.pipe";
 
 export class PaginationQueryValidationPipe extends JoiValidationPipe {

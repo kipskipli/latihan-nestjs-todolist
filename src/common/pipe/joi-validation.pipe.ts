@@ -1,4 +1,4 @@
-import Joi from "joi";
+import * as Joi from "joi";
 import { Injectable, PipeTransform } from "@nestjs/common";
 import { BadRequestException } from "../exceptions";
 import { EPrivilege } from "@inspigoid/inspigo-utils-ts/lib/type";

@@ -29,7 +29,7 @@ export class LoggingInterceptor implements NestInterceptor {
     const res = context.switchToHttp().getResponse<Response>();
     const method = req.method;
     const url = req.url;
-    const user = req.user ? req.user.email : "inspigoKey";
+    const user = req.user && req.user.email ? req.user.email : "inspigoKey";
     return next
       .handle()
       .pipe(

@@ -1,4 +1,4 @@
-import Joi from "joi";
+import * as Joi from "joi";
 import { JoiValidationPipe } from "src/common/pipe";
 import { CreateTodoDto } from "../dto";
 
